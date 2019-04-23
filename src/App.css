@@ -32,16 +32,45 @@
   }
 }
 
-.title{
+.title {
   color: rgb(17, 13, 13);
   border-style: none;
-  background-color:rgb(139, 231, 146);  
+  background-color:rgb(159, 228, 205); 
   font-size: 40;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   text-align: center; 
+  width:100%;
 }
 
 .addTaskRow {
-  
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20;
 }
+
+.col-sm-4 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20;
+  text-align: left;
+  padding: 20 40 20 40;
+  background-color: rgb(159, 228, 205);
+  border-style: double;
+}    
+
+.col-sm-12 {    
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20;
+  text-align: middle;
+  padding: 20 40 20 40;
+  background-color: rgb(174, 211, 198);
+  border-style: double;
+} 
+
+.col-sm-6 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20;
+  text-align: left;
+  padding: 20 40 20 40;
+  border-style: double;
+  background-color: rgb(159, 228, 205)    
+}                
