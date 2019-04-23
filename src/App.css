@@ -31,3 +31,17 @@
     transform: rotate(360deg);
   }
 }
+
+.title{
+  color: rgb(17, 13, 13);
+  border-style: none;
+  background-color:rgb(139, 231, 146);  
+  font-size: 40;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  text-align: center; 
+}
+
+.addTaskRow {
+  
+}
