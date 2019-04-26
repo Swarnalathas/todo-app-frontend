@@ -4,29 +4,18 @@ class TaskList extends Component {
     render() {
         return (
             <div className="row" >
-                <div class="col-sm-4" >
-                    Visit Library
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <div className="col-sm-12 col-md-8" >
+                    {this.props.taskName}
                 </div>
-                <div class="col-sm-4 ">
-                    Go To Shop
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+                <div className="col-sm-6 col-md-2">
+                <button type="button" >Done
+                </button>
                 </div>
-                <div class="col-sm-4 ">
-                    Swim Lessons
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                </div>
-                <div class="col-sm-6 ">
-                    Meet Friends
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                </div>
-                <div class="col-sm-6 ">
-                    Summit Assignment
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                </div>
-                <div class="col-sm-12 ">
-                    Excercises
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+                <div className="col-sm-6 col-md-2">
+                <button type="button" >Delete
+                </button>
                 </div>
             </div>
         );

@@ -1,22 +1,40 @@
 import React, { Component } from 'react';
 
 class AddTask extends Component {
+    state = {
+        textEntered: ""
+    }
+
+    onAddClicked = () => {
+        if (this.state.textEntered === "") {
+            alert("Please enter the Task");
+        } else {
+            this.props.addTaskFunction(this.state.textEntered);
+            this.setState({ textEntered: "" });
+        }
+    }
+
+    onTextChanged = (event) => {
+        this.setState({ textEntered: event.target.value });
+    }
+
     render() {
         return (
-            <div className="row addTaskRow">
-                <div>
-                <span class="input-group-text" id="basic-addon1">Enter the Task List</span>
+            <div class="input-group mb-3 addTask">
+                <div >
+                    <span class="input-group-text" id="basic-addon1">Enter the Task List</span>
                 </div>
                 <div>
-                <input type="text" class="form-control" placeholder="Type here..." aria-label="Username"
-                    aria-describedby="basic-addon1" />
+                    <input type="text" class="form-control" placeholder="Type here..."
+                        onChange={this.onTextChanged} value={this.state.textEntered} />
                 </div>
-                <div col-sm-4>
-                <button type="button" class="btn btn-outline-success">Add</button>
+                <div>
+                    <button type="button" class="btn btn-outline-success" onClick={this.onAddClicked}>Add Task</button>
                 </div>
             </div>
         );
     }
 }
+
 
 export default AddTask;

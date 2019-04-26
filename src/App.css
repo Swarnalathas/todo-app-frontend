@@ -32,28 +32,37 @@
   }
 }
 
-.title {
-  color: rgb(17, 13, 13);
-  border-style: none;
+#title {
+  color: rgb(17, 13, 13);  
   background-color:rgb(159, 228, 205); 
   font-size: 40;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   text-align: center; 
-  width:100%;
+  width:100%; 
 }
+
+.addTask {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20;
+  padding:30px;
+  widows: 100px; 
+  text-align: center; 
+  widows: 100px;
+}
+
 
 .addTaskRow {
   font-family: 'Courier New', Courier, monospace;
   font-size: 20;
+  text-align: left;
 }
 
 .col-sm-4 {
   font-family: 'Courier New', Courier, monospace;
   font-size: 20;
   text-align: left;
-  padding: 20 40 20 40;
-  background-color: rgb(159, 228, 205);
+  padding: 20 40 20 40;  
   border-style: double;
 }    
 
