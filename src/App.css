@@ -51,7 +51,6 @@
   widows: 100px;
 }
 
-
 .addTaskRow {
   font-family: 'Courier New', Courier, monospace;
   font-size: 20;
@@ -81,5 +80,5 @@
   text-align: left;
   padding: 20 40 20 40;
   border-style: double;
-  background-color: rgb(159, 228, 205)    
+  background-color: rgb(174, 211, 198);   
 }                

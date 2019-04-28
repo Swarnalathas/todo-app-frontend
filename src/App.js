@@ -18,6 +18,12 @@ class App extends Component {
     this.setState({ tasksList: currentListofTask });
   }
 
+  onDeleteClicked = (rowNum) => {      
+    let currentDeleteTask = this.state.tasksList;
+    currentDeleteTask.splice(rowNum,1);   
+    this.setState({tasksList: currentDeleteTask});
+  }
+  
   render() {
 
     return (
@@ -36,8 +42,8 @@ class App extends Component {
           <TaskCounter taskCount={this.state.tasksList.length} />
         </div>
         {
-          this.state.tasksList.map(function (item, index) {
-            return <TaskList taskName={item} key={index} />
+          this.state.tasksList.map( (item, index) => {           
+            return <TaskList taskName={item} key={index} rowNum={index} deleteTask={this.onDeleteClicked}/>
           })
         }
       </div>

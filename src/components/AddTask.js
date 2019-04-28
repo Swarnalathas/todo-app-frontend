@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
 class AddTask extends Component {
+
     state = {
         textEntered: ""
     }
+
 
     onAddClicked = () => {
         if (this.state.textEntered === "") {
@@ -13,6 +15,7 @@ class AddTask extends Component {
             this.setState({ textEntered: "" });
         }
     }
+
 
     onTextChanged = (event) => {
         this.setState({ textEntered: event.target.value });
