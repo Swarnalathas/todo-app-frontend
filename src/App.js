@@ -13,17 +13,25 @@ class App extends Component {
   }
 
   addTask(taskDescription) {
+
     let currentListofTask = this.state.tasksList;
     currentListofTask.push(taskDescription);
     this.setState({ tasksList: currentListofTask });
   }
 
-  onDeleteClicked = (rowNum) => {      
+  onDeleteClicked = (rowNum) => {
+
     let currentDeleteTask = this.state.tasksList;
-    currentDeleteTask.splice(rowNum,1);   
-    this.setState({tasksList: currentDeleteTask});
+    currentDeleteTask.splice(rowNum, 1);
+    this.setState({ tasksList: currentDeleteTask });
   }
-  
+
+  onTaskSelected = (rowNum) => {
+    let currentSelectTask = this.state.tasksList;
+    currentSelectTask[rowNum] = currentSelectTask[rowNum].strike();
+    this.setState({ tasksList: currentSelectTask });
+  }
+
   render() {
 
     return (
@@ -42,8 +50,9 @@ class App extends Component {
           <TaskCounter taskCount={this.state.tasksList.length} />
         </div>
         {
-          this.state.tasksList.map( (item, index) => {           
-            return <TaskList taskName={item} key={index} rowNum={index} deleteTask={this.onDeleteClicked}/>
+          this.state.tasksList.map((item, index) => {
+            return <TaskList taskName={item} key={index} rowNum={index} deleteTask={this.onDeleteClicked}
+              taskSelect={this.onTaskSelected} />
           })
         }
       </div>

@@ -6,8 +6,8 @@ class AddTask extends Component {
         textEntered: ""
     }
 
-
     onAddClicked = () => {
+
         if (this.state.textEntered === "") {
             alert("Please enter the Task");
         } else {
@@ -15,7 +15,6 @@ class AddTask extends Component {
             this.setState({ textEntered: "" });
         }
     }
-
 
     onTextChanged = (event) => {
         this.setState({ textEntered: event.target.value });
