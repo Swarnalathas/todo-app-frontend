@@ -5,6 +5,7 @@ import Header from './components/Header';
 import AddTask from './components/AddTask';
 import TaskList from './components/TaskList';
 import TaskCounter from './components/TaskCounter';
+import uuidv1 from 'uuid/v1';
 
 
 class App extends Component {
@@ -12,23 +13,40 @@ class App extends Component {
     tasksList: []
   }
 
-  addTask(taskDescription) {
+  addTask = (taskText) => {
 
-    let currentListofTask = this.state.tasksList;
-    currentListofTask.push(taskDescription);
+    const currentListofTask = this.state.tasksList;
+    const taskId = uuidv1();
+
+    const newTask = {
+
+      taskDescription: taskText,
+      id: taskId,
+      completed: false
+
+    };
+    currentListofTask.push(newTask);
     this.setState({ tasksList: currentListofTask });
   }
 
-  onDeleteClicked = (rowNum) => {
+  onDeleteClicked = (taskid) => {
 
-    let currentDeleteTask = this.state.tasksList;
-    currentDeleteTask.splice(rowNum, 1);
-    this.setState({ tasksList: currentDeleteTask });
+    const currentDeleteTask = this.state.tasksList;
+    const filteredTask = currentDeleteTask.filter(item => {
+      return item.id !== taskid;
+    });
+    this.setState({ tasksList: filteredTask });
   }
 
-  onTaskSelected = (rowNum) => {
+  onTaskSelected = (taskid) => {
     let currentSelectTask = this.state.tasksList;
-    currentSelectTask[rowNum] = currentSelectTask[rowNum].strike();
+
+    currentSelectTask.forEach(element => {
+      if (element.id === taskid) {
+        element.completed = true;
+      }
+    });
+
     this.setState({ tasksList: currentSelectTask });
   }
 
@@ -51,7 +69,7 @@ class App extends Component {
         </div>
         {
           this.state.tasksList.map((item, index) => {
-            return <TaskList taskName={item} key={index} rowNum={index} deleteTask={this.onDeleteClicked}
+            return <TaskList task={item} key={index} deleteTask={this.onDeleteClicked}
               taskSelect={this.onTaskSelected} />
           })
         }

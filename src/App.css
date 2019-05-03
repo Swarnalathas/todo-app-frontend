@@ -74,6 +74,17 @@
   border-style: double;
 } 
 
+.col-sm-12-done {    
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20;
+  text-align: middle;
+  padding: 20 40 20 40;
+  background-color: rgb(174, 211, 198);
+  border-style: double;
+  text-decoration: line-through;
+  
+} 
+
 .col-sm-6 {
   font-family: 'Courier New', Courier, monospace;
   font-size: 20;
@@ -81,4 +92,8 @@
   padding: 20 40 20 40;
   border-style: double;
   background-color: rgb(174, 211, 198);   
+}                
+
+.btnDisable {  
+  visibility: hidden;
 }                
