@@ -10,7 +10,8 @@ class AddTask extends Component {
 
     onAddClicked = () => {
         const newText = this.state.textEntered;
-        const newDate = moment(this.state.date, "YYYY-MM-DD");
+       // const newDate = moment(this.state.date, "YYYY-MM-DD");
+       const newDate = this.state.date;
 
         if (newText === "") {
             alert("Please enter the Task");

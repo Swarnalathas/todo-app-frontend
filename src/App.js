@@ -14,11 +14,12 @@ class App extends Component {
     tasksList: []
   };
   // Anything in here happens on the first,initial render of the component
+  apiEndpoint = "https://i8apzc5y2a.execute-api.eu-west-2.amazonaws.com/dev/tasks";
 
   componentDidMount = () => {
     // this from postman url for get Task and also new in E6
     // this the method to handling Async deal with permisess
-    axios.get("https://i8apzc5y2a.execute-api.eu-west-2.amazonaws.com/dev/tasks")
+    axios.get(this.apiEndpoint)
       .then(result => {
         this.setState({
           tasksList: result.data.tasks
@@ -40,7 +41,7 @@ class App extends Component {
       user_id: 1
     };
 
-    axios.post("https://i8apzc5y2a.execute-api.eu-west-2.amazonaws.com/dev/tasks", newTask)
+    axios.post(this.apiEndpoint, newTask)
 
       .then(result => {
         const taskId = result.data.task_id;
@@ -57,30 +58,36 @@ class App extends Component {
 
   onDeleteClicked = (taskid) => {
 
-    const currentDeleteTask = this.state.tasksList;
-    const  deleteAPI = "https://i8apzc5y2a.execute-api.eu-west-2.amazonaws.com/dev/tasks";
-      
-    axios.delete(deleteAPI + '/' + taskid)
+    axios.delete(this.apiEndpoint + '/' + taskid)
       .then(result => {
-        const filteredTask = currentDeleteTask.filter(item => item.task_id !== taskid);
-        this.setState({ tasksList: filteredTask});  
+        this.componentDidMount();
       })
       .catch(err => {
-      })    
+      })
   }
 
   onTaskSelected = (taskid) => {
     let currentSelectTask = this.state.tasksList;
 
-    currentSelectTask.forEach(element => {
-      if (element.id === taskid) {
-        element.completed = true;
+    let updateTask;
+    currentSelectTask.forEach(item => {
+      if (item.task_id === taskid) {
+        item.completed = "T";        
+        updateTask = item;
       }
     });
 
-    this.setState({ tasksList: currentSelectTask });
-  }
 
+
+    axios.put(this.apiEndpoint + '/' + [taskid], updateTask)
+
+      .then(result => {
+        this.componentDidMount();
+      })
+      .catch(err => {
+        console.log("inside err");
+      })
+  }
 
   render() {
 
@@ -108,7 +115,7 @@ class App extends Component {
                   key={index}
                   deleteTask={this.onDeleteClicked}
                   taskSelect={this.onTaskSelected}
-                  date={item.date}
+                  date={item}
                 />
               })
             }

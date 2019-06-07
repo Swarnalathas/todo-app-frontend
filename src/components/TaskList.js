@@ -5,20 +5,30 @@ import moment from 'moment';
 class TaskList extends Component {
 
     render() {
-       let taskDone;
+        let taskDone;
 
-       let buttonDisable;
-         if(this.props.task.completed === "T"){
-            taskDone ="col-sm-6-done col-md-6";
+        let buttonDisable;
+        if (this.props.task.completed === "T") {
+            taskDone = "col-sm-6-done col-md-6";
             buttonDisable = "btnDisable"
-         } else{
+        } else {
             taskDone = "col-sm-6 col-md-6";
             buttonDisable = "btn btn-outline-success";
-         }
+        }
 
-       //  let buttonDisable;
-       // const taskDone = this.props.task.completed ? "col-sm-6-done col-md-6" : "col-sm-6 col-md-6";
-      //  const buttonDisable = this.props.task.completed ? "btnDisable" : "btn btn-outline-success";
+
+        let dateFromAPI = this.props.task.due_date;
+        let localDate = new Date(dateFromAPI);
+        let localDateString = localDate.toLocaleDateString(undefined, {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+        })
+
+
+        //  let buttonDisable;
+        // const taskDone = this.props.task.completed ? "col-sm-6-done col-md-6" : "col-sm-6 col-md-6";
+        //  const buttonDisable = this.props.task.completed ? "btnDisable" : "btn btn-outline-success";
 
         return (
             <div className="row">
@@ -26,7 +36,11 @@ class TaskList extends Component {
                     {this.props.task.description}
                 </div>
                 <span className="col-sm-2 col-md-2">
-                    {/* {moment(this.props.date, "DD-MM-YYYY").format("Do MMM YYYY")} */}
+                    {
+                       // moment(localDateString, "DD-MM-YYYY").format("Do MMM YYYY")
+                        //this.props.task.due_date
+                        localDateString
+                    }
                 </span>
 
                 <span className="col-sm-2 col-md-2">
